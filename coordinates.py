@@ -1,12 +1,12 @@
-"""Модуль для работы с трехмерными координатами."""
+"""Module for working with 3D coordinates."""
 
 def generate_combinations(max_x: int, max_y: int, max_z: int) -> list[dict]:
     """
-    Генерирует все возможные комбинации координат от (0,0,0) до (max_x, max_y, max_z)
-    путем последовательного перемещения по осям x, y, z.
+    Generates all possible coordinate combinations from (0,0,0) to (max_x, max_y, max_z)
+    by sequentially moving along the x, y, z axes.
     """
     def _generate_axis(axis: str, max_value: int, current_coords: list[dict]) -> None:
-        """Генерирует координаты вдоль одной оси."""
+        """Generates coordinates along a single axis."""
         new_coords = []
         for coord in current_coords:
             for step in range(1, max_value + 1):
@@ -29,7 +29,7 @@ def generate_combinations(max_x: int, max_y: int, max_z: int) -> list[dict]:
 
 
 def filter_by_sum(coordinates: list[dict], target_sum: int) -> list[dict]:
-    """Фильтрует координаты, удаляя те, где сумма значений осей равна target_sum."""
+    """Filters coordinates, removing those where the sum of axis values equals target_sum."""
     return [
         coord for coord in coordinates 
         if coord["x"] + coord["y"] + coord["z"] != target_sum
@@ -37,6 +37,6 @@ def filter_by_sum(coordinates: list[dict], target_sum: int) -> list[dict]:
 
 
 def print_coords(coordinates: list[dict]) -> None:
-    """Выводит в консоль список координат в формате: x: value, y: value, z: value"""
+    """Prints a list of coordinates in the format: x: value, y: value, z: value"""
     for coordinate in coordinates:
         print(f"x: {coordinate['x']}, y: {coordinate['y']}, z: {coordinate['z']}")
